@@ -1,0 +1,61 @@
+server:
+  port: 8022
+  contextPath: /
+
+spring:
+  thymeleaf:
+    mode: HTML5
+    cache: false
+    encoding: UTF-8
+    charset: UTF-8
+    content-type: text/html
+    prefix: classpath:/templates
+    suffix: .html
+---
+spring.profiles.active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/mytest
+      username: root
+      password: 123
+
+---
+
+spring:
+  mail:
+    host: smtp.qiye.163.com
+    username: maxin@social-touch.com
+    password: Maxin110
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+---
+spring:
+  batch:
+    job:
+      enabled: false
+    initializer:
+      enabled: false
+#spring:
+#  cache:
+#    #缓存名称
+#    cache-names: employee
+#    #缓存最大数量500条, 缓存失效时间 6个小时
+#    #guava.spec: maximumSize=500,expireAfterWrite=360m
+#  # REDIS (RedisProperties)
+#  redis :
+#    host : localhost # server host
+#    port : 6379 # connection port
+#    pool.max-idle : 8 # pool settings ...
+#    pool.min-idle : 1
+#    pool.max-active : 8
+#    pool.max-wait : -1
+

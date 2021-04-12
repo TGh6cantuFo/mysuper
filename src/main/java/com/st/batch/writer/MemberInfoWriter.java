@@ -20,6 +20,7 @@ public class MemberInfoWriter implements ItemWriter<MemberInfo> {
     @Override
     public void write(List<? extends MemberInfo> list) throws Exception {
         logger.info("[PosCountersDsWriter write] run list size:" + list.size());
+        System.out.println("------------------------");
     //    if (!list.isEmpty())
     //    mfPushMemberDMapper.addMemberInfoBatch(list);
     }

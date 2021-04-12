@@ -15,11 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 
 import javax.sql.DataSource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 @Configuration
 @EnableBatchProcessing
@@ -56,7 +56,7 @@ public class MemberInfoStepConf {
         //创建Reader
         FlatFileItemReader<MemberInfo> reader = new FlatFileItemReader<MemberInfo>();
         //加载Resource
-        reader.setResource(new ClassPathResource("classpath:MemberInfo-2016-12-30.txt"));
+        reader.setResource(new FileSystemResource("E:/MemberInfo-2016-12-30.txt"));
         //查询起始执行行数
         //HashMap parm = new HashMap();
         //parm.put("step", "memberInfoStep");

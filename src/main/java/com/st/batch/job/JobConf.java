@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.Resource;
+
 @Configuration
 @EnableBatchProcessing
 public class JobConf {
@@ -18,10 +20,11 @@ public class JobConf {
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
 
-    @Autowired
-    @Qualifier("memberInfoStep")
+    @Resource
     public Step memberInfoStep;
 
+    @Resource
+    public Step firstStep;
 
     @Bean
     public Job MFJob(JobCompletionNotificationListener listener) {
@@ -29,7 +32,8 @@ public class JobConf {
         return jobBuilderFactory.get("MFJob")
                 .incrementer(new RunIdIncrementer())
                 //.listener(listener)
-                .flow(memberInfoStep)
+                .flow(firstStep)
+                //.next(memberInfoStep)
                 .end()
                 .build();
     }
